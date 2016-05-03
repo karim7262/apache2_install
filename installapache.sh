@@ -28,7 +28,7 @@ if ! [ "$?" -eq "0" ]; then
 else
 	echo -e "\e[0;32m   [Готово]\e[0m"
 fi
-echo "Установка WEB Сервера Apache и включение необходимых модулей"
+echo -n "Установка WEB Сервера Apache и включение необходимых модулей"
 apt-get -y install apache2 apache2-utils > /dev/null 2>&1
 
 cp /etc/apache2/conf-available/security.conf /etc/apache2/conf-available/security.conf.bk
@@ -87,9 +87,9 @@ cat > /etc/apache2/sites-available/000-default.conf << EOF
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 EOF
-
-echo "Перезапускаем Apache"
+echo -e "\e[0;32m   [Готово]\e[0m"
+echo -n "Перезапускаем Apache"
 service apache2 restart > /dev/null 2>&1
-
-echo "Web сервер `apachectl -v | cut -d ' ' -f 3- | tr -d "\n" | tr -s ' '` успешно установлен"
+echo -e "\e[0;32m   [Готово]\e[0m"
+echo -e "Web сервер \e[0;32m`apachectl -v | cut -d ' ' -f 3- | tr -d "\n" | tr -s ' '`\e[0m успешно установлен"
 

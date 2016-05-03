@@ -19,7 +19,7 @@ if ! [ "$?" -eq 0 ]; then
 	echo -en "\e[0m"
 	rm -f .update.err
 	read -p "Продолжить установку? [Y/N]: " -n 1 
-	case $ANSWER in
+	case $REPLAY in
 		Y|y) cleardown
 			echo -e "\e[0;32mПродолжаем...\e[0m" ;;
 		*) exit 1 ;;

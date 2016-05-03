@@ -18,7 +18,8 @@ if ! [ "$?" -eq 0 ]; then
 	cat .update.err | grep -E "^E:"
 	echo -en "\e[0m"
 	rm -f .update.err
-	read -p "Продолжить установку? [Y/N]: " -n 1 
+	read -p "Продолжить установку? [Y/N]: " -n 1 REPLAY 
+	echo
 	case $REPLAY in
 		Y|y) cleardown
 			echo -e "\e[0;32mПродолжаем...\e[0m" ;;

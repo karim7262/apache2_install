@@ -9,7 +9,7 @@ if ! [ $(id -u) = 0 ]; then
 	echo -e "Необходимо запустить "$ME" от имени root\\nДля этого выполните команду sudo "$ME
 	exit 1
 fi
-if [ "$(dpkg-query -W -f='${Status}' apache2 2>/dev/null | grep -c "ok installed")" -eq 0 ]; then
+if [ "$(dpkg-query -W -f='${Status}' apache2 2>/dev/null | grep -c "ok installed")" -ne 0 ]; then
 	echo -e "Web сервер \e[0;33m`apachectl -v | cut -d ' ' -f 3- | tr -d "\n" | tr -s ' '`\e[0m уже установлен"
 	exit 0
 fi

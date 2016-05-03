@@ -12,7 +12,7 @@ fi
 
 echo -n "Проверка доступности новых версий пакетов"
 apt-get update --fix-missing > /dev/null 2>.update.err
-if ! [ "$?" -eq 0 ]; then
+if ! [ "$?" -eq "0" ]; then
 	echo
 	echo -en "\e[0;31m"
 	cat .update.err | grep -E "^E:"

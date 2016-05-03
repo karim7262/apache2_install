@@ -12,19 +12,19 @@ fi
 
 echo -n "Проверка доступности новых версий пакетов"
 apt-get update --fix-missing > /dev/null 2>&1
-echo -e "\e[0;31m Готово\e[0m"
+echo -e "\e[0;31m   [Готово]\e[0m"
 echo 
 echo "Установка WEB Сервера Apache и включение необходимых модулей"
 apt-get -y install apache2 apache2-utils > /dev/null 2>&1
 
 cp /etc/apache2/conf-available/security.conf /etc/apache2/conf-available/security.conf.bk
 if [ -f /etc/apache2/conf-available/security.conf ]; then
-	if ! [ -z "$(cat /etc/apache2/conf-available/security.conf | grep -e '^\ServerSignature')" ]; then
+	if ! [ -z "$(cat /etc/apache2/conf-available/security.conf | grep -E '^ServerSignature')" ]; then
 		sed -i "/^ServerSignature/s/ServerSignature.*$/ServerSignature Off/g" /etc/apache2/conf-available/security.conf
 	else
 		echo "ServerSignature Off" >> /etc/apache2/conf-available/security.conf
 	fi
-	if ! [ -z "$(cat /etc/apache2/conf-available/security.conf | grep -e '^\ServerTokens')" ]; then
+	if ! [ -z "$(cat /etc/apache2/conf-available/security.conf | grep -E '^ServerTokens')" ]; then
 		sed -i "/^ServerTokens/s/ServerTokens.*$/ServerTokens Prod/g" /etc/apache2/conf-available/security.conf
 	else
 		echo "ServerTokens Prod" >> /etc/apache2/conf-available/security.conf

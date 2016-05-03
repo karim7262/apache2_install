@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function cldown (){
+function cleardown (){
 	yes '' | head -n 100
 }
-cldown
+cleardown
 ME="$(echo $0 | sed -e 's/^.*\///')"
 if ! [ $(id -u) = 0 ]; then
         echo -e "Необходимо запустить "$ME" от имени root\\nДля этого выполните команду sudo "$ME

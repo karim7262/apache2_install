@@ -91,5 +91,5 @@ EOF
 echo "Перезапускаем Apache"
 service apache2 restart > /dev/null 2>&1
 
-echo "Web сервер Apache `apachectl -v | grep -a 'Server version:' | sed -e "s/^.*\///g"` успешно установлен"
+echo "Web сервер `apachectl -v | cut -d ' ' -f 3- | tr -d "\n" | tr -s ' '` успешно установлен"
 

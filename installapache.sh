@@ -19,7 +19,7 @@ if ! [ "$?" -eq 0 ]; then
 	echo -en "\e[0m"
 	rm -f .update.err
 	read -p "Продолжить установку? [Y/N]: " -n 1 
-	case $ANWER in
+	case $ANSWER in
 		Y|y) cleardown
 			echo -e "\e[0;32mПродолжаем...\e[0m" ;;
 		*) exit 1 ;;
@@ -27,7 +27,6 @@ if ! [ "$?" -eq 0 ]; then
 else
 	echo -e "\e[0;32m   [Готово]\e[0m"
 fi
-echo 
 echo "Установка WEB Сервера Apache и включение необходимых модулей"
 apt-get -y install apache2 apache2-utils > /dev/null 2>&1
 
